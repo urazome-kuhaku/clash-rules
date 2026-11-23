@@ -1,0 +1,9 @@
+# media-v4 — Shadowrocket RULE-SET 版（与同名 .yaml 内容一致，格式为小火箭/Surge 的 .list）
+# 由 clash-rules 仓库托管，供 shadowrocket.conf 引用；改名单时与 .yaml 同步改。
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,ytimg.com
+DOMAIN-SUFFIX,googlevideo.com
+DOMAIN-SUFFIX,mail.google.com
+DOMAIN-SUFFIX,play.google.com
+DOMAIN-SUFFIX,whatsapp.com
+DOMAIN-SUFFIX,whatsapp.net
