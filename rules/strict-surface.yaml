@@ -1,0 +1,54 @@
+# 严格风控敏感面清单（来源：0xkaka/homeport §10，2026-11-23 记录）
+# 状态：本文件未被任何主配置引用，也未在 rule-providers 里定义。
+# 买日本静态 IP、逐步停掉机场后启用：建一个指向静态 IP 节点的 STATIC 组，
+# 在主配置加一个 classical 提供方定义 + 一行 - RULE-SET,strict-surface,STATIC。
+#
+# 写法说明（已按 Mihomo 规则核对过）：
+# - behavior: classical 的 payload 条目，策略由 RULE-SET 那行统一给。
+# - 本文件因此不能放 Anthropic 的两个 IPv6 REJECT 段（2607:6bc0::/48、
+# 2607:6bc0:11::/48）：一个 RULE-SET 行只能给一个策略，REJECT 需单独写成
+# 主配置里的两行普通规则：IP-CIDR6,2607:6bc0::/48,REJECT,no-resolve
+# 与 IP-CIDR6,2607:6bc0:11::/48,REJECT,no-resolve。启用时别忘了补。
+# - IP-CIDR / IP-ASN 条目保留了,no-resolve（这是规则参数，不是策略）。
+payload:
+# Claude / Anthropic
+- DOMAIN-SUFFIX,claude.ai
+- DOMAIN-SUFFIX,claude.com
+- DOMAIN-SUFFIX,clau.de
+- DOMAIN-SUFFIX,anthropic.com
+- DOMAIN-SUFFIX,claudeusercontent.com
+- DOMAIN-SUFFIX,claudemcpcontent.com
+- DOMAIN-SUFFIX,modelcontextprotocol.io
+# 监控 / 风控遥测
+- DOMAIN-SUFFIX,sentry.io
+- DOMAIN-SUFFIX,datadoghq.com
+- DOMAIN-SUFFIX,growthbook.io
+- DOMAIN-SUFFIX,usefathom.com
+- DOMAIN-SUFFIX,segment.io
+- DOMAIN-SUFFIX,siftscience.com
+- DOMAIN-SUFFIX,intercom.io
+- DOMAIN-SUFFIX,intercomcdn.com
+# 人机验证
+- DOMAIN-SUFFIX,hcaptcha.com
+- DOMAIN-SUFFIX,challenges.cloudflare.com
+- DOMAIN-SUFFIX,recaptcha.net
+# 支付 / 身份认证
+- DOMAIN-SUFFIX,stripe.com
+- DOMAIN-SUFFIX,stripe.network
+- DOMAIN-SUFFIX,stripecdn.com
+- DOMAIN-SUFFIX,withpersona.com
+# Google
+- DOMAIN-SUFFIX,google.com
+- DOMAIN-SUFFIX,googleapis.com
+- DOMAIN-SUFFIX,gstatic.com
+- DOMAIN-SUFFIX,googleusercontent.com
+- DOMAIN-SUFFIX,gmail.com
+# 出口 IP 检测
+- DOMAIN-SUFFIX,webshare.io
+- DOMAIN-SUFFIX,ipinfo.io
+# 关键词与 IP 段兜底
+- DOMAIN-KEYWORD,anthropic
+- DOMAIN-KEYWORD,claude
+- DOMAIN-KEYWORD,browser-intake
+- IP-CIDR,160.79.104.0/21,no-resolve
+- IP-ASN,399358,no-resolve
