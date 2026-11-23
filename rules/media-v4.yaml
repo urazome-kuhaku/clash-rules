@@ -1,0 +1,11 @@
+# 被 DNS 污染重灾区，强制走 v4（日本家宽），不吃 GEOIP
+# （原 clash-v4only.yaml rules 段，2026-11-23 抽出）
+# behavior: domain；策略由主配置的 RULE-SET,media-v4,v4 一行给。
+payload:
+  - "+.youtube.com"
+  - "+.ytimg.com"
+  - "+.googlevideo.com"
+  - "+.mail.google.com"
+  - "+.play.google.com"
+  - "+.whatsapp.com"
+  - "+.whatsapp.net"
