@@ -1,0 +1,22 @@
+# AI 17 域名（原 clash-v4only.yaml rules 段，2026-11-23 抽出）
+# behavior: domain；策略由主配置的 RULE-SET,ai-domains,ai 一行给。
+# 含 2026-11-04 实测补充的 Muse 冷启动 5 条（facebook.com / metaaivm.com /
+# museai.com / ecto1.ai / meta.com），与 x64 服务端守卫名单同步维护。
+payload:
+  - "+.openai.com"
+  - "+.chatgpt.com"
+  - "+.oaistatic.com"
+  - "+.oaiusercontent.com"
+  - "+.openai.org"
+  - "+.anthropic.com"
+  - "+.claude.ai"
+  - "+.gemini.google.com"
+  - "+.aistudio.google.com"
+  - "+.x.ai"
+  - "+.meta.ai"
+  - "+.muse.ai"
+  - "+.facebook.com"
+  - "+.metaaivm.com"
+  - "+.museai.com"
+  - "+.ecto1.ai"
+  - "+.meta.com"
